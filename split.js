@@ -3,15 +3,18 @@
 
 const items = document.querySelectorAll("[data-split]");
 
-items.forEach((item) => {
-  const wrapper = item.closest(".split-wrapper");
-  const classes = item.classList;
-  const split = item.textContent.split(",").map((item) => item.trim());
-  split.forEach((item) => {
-    const el = document.createElement("div");
-    el.textContent = item;
-    classes.forEach((className) => el.classList.add(className));
-    wrapper.appendChild(el);
+if (items.length > 0) {
+  items.forEach((item) => {
+    const wrapper = item.closest(".split-wrapper");
+    if (!wrapper) return;
+    const classes = item.classList;
+    const split = item.textContent.split(",").map((item) => item.trim());
+    split.forEach((item) => {
+      const el = document.createElement("div");
+      el.textContent = item;
+      classes.forEach((className) => el.classList.add(className));
+      wrapper.appendChild(el);
+    });
+    item.remove();
   });
-  item.remove();
-});
+}

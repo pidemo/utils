@@ -17,7 +17,7 @@ This script splits a comma-separated string into multiple `div` elements.
 
 ### Usage
 
-To use this script, you need to structure your HTML in a specific way. The text string you want to split should be in an element with a `data-split` attribute, and this element should be wrapped in a `div` with the class `.split-wrapper`.
+To use this script, you need to structure your HTML in a specific way. The text string you want to split should have a `data-split` attribute (no values needed), and this element should be wrapped in a `div` with the class `.split-wrapper`.
 
 **Example:**
 
