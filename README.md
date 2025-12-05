@@ -17,13 +17,29 @@ This script splits a comma-separated string into multiple `div` elements.
 
 ### Usage
 
-To use this script, you need to structure your HTML in a specific way. The text string you want to split should have a `data-split` attribute (no values needed), and this element should be wrapped in a `div` with the class `.split-wrapper`.
+Steps to use this script:
+
+1. Add the following script to the <head> of the Website:
+
+```html
+<script
+  src="https://cdn.jsdelivr.net/gh/pidemo/utils@2c55bc5/split.min.js"
+  type="text/javascript"
+  defer
+></script>
+```
+
+2. Add a `data-split` attribute to your text element with the string to split (no values needed for the attribute)
+
+3. Add the classes that you'll want on each split text on the coma separated string. Those will be applied to each split item.
+
+4. Wrap the coma separated string into a div with a class of `.split-wrapper`
 
 **Example:**
 
 ```html
 <div class="split-wrapper">
-  <div class="tag" data-split>Apple, Banana, Orange</div>
+  <div class="tag other-combo-class" data-split>Apple, Banana, Orange</div>
 </div>
 ```
 
@@ -31,8 +47,8 @@ After the script runs, the HTML will be transformed into:
 
 ```html
 <div class="split-wrapper">
-  <div class="tag">Apple</div>
-  <div class="tag">Banana</div>
-  <div class="tag">Orange</div>
+  <div class="tag other-combo-class">Apple</div>
+  <div class="tag other-combo-class">Banana</div>
+  <div class="tag other-combo-class">Orange</div>
 </div>
 ```
