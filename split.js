@@ -8,10 +8,14 @@ if (items.length > 0) {
     const wrapper = item.closest(".split-wrapper");
     if (!wrapper) return;
     const classes = item.classList;
-    const split = item.textContent.split(",").map((item) => item.trim());
-    split.forEach((item) => {
+    // Determine the separator: use the value of data-split if present, otherwise default to ","
+    const separator = item.getAttribute("data-split") || ",";
+    const split = item.textContent
+      .split(separator)
+      .map((piece) => piece.trim());
+    split.forEach((piece) => {
       const el = document.createElement("div");
-      el.textContent = item;
+      el.textContent = piece;
       classes.forEach((className) => el.classList.add(className));
       wrapper.appendChild(el);
     });
