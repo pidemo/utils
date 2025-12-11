@@ -9,7 +9,7 @@ This script splits a comma-separated string into multiple `div` elements.
 ### How it works
 
 1.  It selects all elements that have the `data-split` attribute.
-2.  The script takes the text content of these elements and splits it into an array based on commas.
+2.  The script splits the text content of these elements into an array. It uses the value of the `data-split` attribute as the separator. If no value is provided, it defaults to a comma.
 3.  For each item in the array, it creates a new `div` element.
 4.  The classes from the original element are copied to each new `div`.
 5.  These new `div`s are appended to the closest parent element with the class `.split-wrapper`.
@@ -23,19 +23,19 @@ Steps to use this script:
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/gh/pidemo/utils@2c55bc5/split.min.js"
+  src="https://cdn.jsdelivr.net/gh/pidemo/utils@32c6e84/split.min.js"
   type="text/javascript"
   defer
 ></script>
 ```
 
-2. Add a `data-split` attribute to your text element with the string to split (no values needed for the attribute)
+2. Add a `data-split` attribute to your text element. You can optionally provide a value to this attribute to specify a custom separator (e.g., `data-split=";" `). If no value is provided, it will default to splitting by a comma.
 
 3. Add the classes that you'll want on each split text on the coma separated string. Those will be applied to each split item.
 
 4. Wrap the coma separated string into a div with a class of `.split-wrapper`
 
-**Example:**
+**Example (default comma separator):**
 
 ```html
 <div class="split-wrapper">
@@ -50,5 +50,23 @@ After the script runs, the HTML will be transformed into:
   <div class="tag other-combo-class">Apple</div>
   <div class="tag other-combo-class">Banana</div>
   <div class="tag other-combo-class">Orange</div>
+</div>
+```
+
+**Example (custom separator):**
+
+```html
+<div class="split-wrapper">
+  <div class="tag" data-split="|">Apple | Banana | Orange</div>
+</div>
+```
+
+After the script runs, the HTML will be transformed into:
+
+```html
+<div class="split-wrapper">
+  <div class="tag">Apple</div>
+  <div class="tag">Banana</div>
+  <div class="tag">Orange</div>
 </div>
 ```
